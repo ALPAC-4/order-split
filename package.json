@@ -1,0 +1,17 @@
+{
+  "name": "order-split",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/sample.ts",
+  "scripts": {
+    "start": "node --stack_size=4096 --max-old-space-size=4096 -r ts-node/register/transpile-only -r tsconfig-paths/register src/sample.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@terra-money/terra.js": "^3.0.1",
+    "ts-node": "^10.2.1",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  }
+}
