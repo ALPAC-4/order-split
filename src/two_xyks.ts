@@ -1,40 +1,5 @@
 import { LCDClient } from '@terra-money/terra.js'
-
-interface PairInfo {
-  assets: [Asset, Asset]
-  commissionRate: number
-  adjustedLiquidity?: number
-}
-
-interface NativeToken {
-  native_token: { denom: string }
-}
-
-interface Token {
-  token: { contract_addr: string }
-}
-
-type AssetInfo = NativeToken | Token
-
-interface Asset {
-  info: AssetInfo
-  amount: string
-}
-
-interface PoolQueryResXyk {
-  assets: [Asset, Asset],
-  total_share: string
-}
-
-interface SimulationRes {
-  return_amount: string
-  spread_amount: string
-  commission_amount: string
-}
-
-function isSameInfo(info0: AssetInfo, info1: AssetInfo) {
-  return JSON.stringify(info0) === JSON.stringify(info1)
-}
+import { sortAssets } from './utils'
 
 function useTwoDex(pairInfos: [PairInfo, PairInfo], offerAsset: Asset): [Asset, Asset] {
   pairInfos = [
@@ -72,15 +37,6 @@ function useTwoDex(pairInfos: [PairInfo, PairInfo], offerAsset: Asset): [Asset, 
       amount: offerAmount1.toString()
     },
   ]
-}
-
-// make assets[0].info === offerAsset.info where assets: [Asset, Asset] 
-function sortAssets(assets: [Asset, Asset], offerAsset: Asset): [Asset, Asset]{
-  if (isSameInfo(assets[0].info, offerAsset.info)) {
-    return assets
-  } else {
-    return [assets[1], assets[0]]
-  }
 }
 
 // sqrt(liquidity * (1 - commissionRate))

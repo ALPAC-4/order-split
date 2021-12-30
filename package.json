@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/sample.ts",
   "scripts": {
-    "start": "node --stack_size=4096 --max-old-space-size=4096 -r ts-node/register/transpile-only -r tsconfig-paths/register src/sample.ts"
+    "two_xyks": "node --stack_size=4096 --max-old-space-size=4096 -r ts-node/register/transpile-only -r tsconfig-paths/register src/two_xyks.ts",
+    "one_inch_like": "node --stack_size=4096 --max-old-space-size=4096 -r ts-node/register/transpile-only -r tsconfig-paths/register src/one_inch_like.ts"
   },
   "author": "",
   "license": "ISC",
